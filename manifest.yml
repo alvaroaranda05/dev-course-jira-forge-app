@@ -1,0 +1,39 @@
+modules:
+  jira:issuePanel:
+    - key: issue-panel
+      function: panel
+      title: Issue panel
+      icon: https://developer.atlassian.com/platform/forge/images/icons/issue-panel-icon.svg
+  jira:workflowValidator:
+    - key: issue-validator
+      function: validate
+      name: Issue validator
+      description: Issue validator test
+  webtrigger:
+    - key: webtrigger-test
+      function: webtrigger
+  trigger:
+    - key: issue-created-trigger
+      function: issue-created
+      events: [avi:jira:created:issue]
+  jira:adminPage:
+    - key: config-admin-page
+      function: config
+      title: Configuration
+  function:
+    - key: panel
+      handler: panel.run
+    - key: validate
+      handler: validator.run
+    - key: webtrigger
+      handler: webtrigger.run
+    - key: issue-created
+      handler: issue-created-trigger.run
+    - key: config
+      handler: config.run
+app:
+  id: ari:cloud:ecosystem::app/864f437b-ab02-4b6c-ba01-434e07f8962b
+permissions:
+  scopes:
+    - read:jira-work
+    - storage:app
